@@ -19,7 +19,7 @@ function App() {
           lg: `"nav nav" "aside main" "footer footer"`,
         }}
       >
-        <GridItem area="nav" p="20px">
+        <GridItem area="nav">
           <Navbar />
         </GridItem>
         <Show above="lg">
