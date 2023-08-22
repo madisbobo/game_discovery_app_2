@@ -5,13 +5,14 @@ import {
   Input,
   HStack,
   Switch,
-  FormControl,
   FormLabel,
+  useColorMode,
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 import logo from "../assets/logo.webp";
 
 const Navbar = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <>
       <HStack align="center">
@@ -24,9 +25,13 @@ const Navbar = () => {
           <Input type="text" placeholder="Search" />
         </InputGroup>
 
-        <Switch id="dark-mode" />
+        <Switch
+          id="dark-mode"
+          isChecked={colorMode === "dark"}
+          onChange={toggleColorMode}
+        />
         <FormLabel htmlFor="dark-mode" mb="0" ml="10px">
-          Dark mode
+          Dark Mode
         </FormLabel>
       </HStack>
     </>
