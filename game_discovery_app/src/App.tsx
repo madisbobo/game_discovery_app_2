@@ -9,7 +9,7 @@ import {
   Show,
 } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
-import Games from "./components/Games";
+import GameGrid from "./components/GameGrid";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main" bg="blue.100">
-          <Games />
+          <GameGrid />
         </GridItem>
         <GridItem area="footer" bg="purple.100">
           footer
