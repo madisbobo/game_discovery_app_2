@@ -1,8 +1,9 @@
-import { Spinner, Text } from "@chakra-ui/react";
+import { HStack, Spinner, Text, Wrap, WrapItem } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
+import GameCard from "./GameCard";
 
 const GameGrid = () => {
-  const {games, isLoading, error} = useGames();
+  const { games, isLoading, error } = useGames();
 
   return (
     <>
@@ -16,11 +17,13 @@ const GameGrid = () => {
           size="xl"
         />
       ) : (
-        <ul>
-          {games.map((game, index) => (
-            <li key={index}>{game.name}</li>
+        <Wrap spacing="30px" justify="center" py="20px">
+          {games.map((game) => (
+            <WrapItem>
+              <GameCard title={game.name} rating={game.rating} />
+            </WrapItem>
           ))}
-        </ul>
+        </Wrap>
       )}
     </>
   );
