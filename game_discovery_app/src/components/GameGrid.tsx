@@ -1,29 +1,8 @@
-import { useEffect, useState } from "react";
 import { Spinner, Text } from "@chakra-ui/react";
-import gameService, { Game, CanceledError } from "../services/game-service";
+import useGames from "../hooks/useGames";
 
 const GameGrid = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    setIsLoading(true);
-    const { request, cancel } = gameService.getAllGames();
-    request
-      .then((res) => {
-        setGames(res.data.results);
-        setIsLoading(false);
-        console.log(res.data.results);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setIsLoading(false);
-        console.log(err);
-      });
-    return () => cancel();
-  }, []);
+  const {games, isLoading, error} = useGames();
 
   return (
     <>
