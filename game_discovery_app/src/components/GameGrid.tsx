@@ -1,4 +1,11 @@
-import { HStack, Spinner, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import {
+  HStack,
+  SimpleGrid,
+  Spinner,
+  Text,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 
@@ -17,13 +24,23 @@ const GameGrid = () => {
           size="xl"
         />
       ) : (
-        <Wrap spacing="30px" justify="center" py="20px">
+        <SimpleGrid
+          columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+          spacing="15px"
+          p="15px"
+        >
           {games.map((game) => (
-            <WrapItem>
-              <GameCard title={game.name} rating={game.rating} />
-            </WrapItem>
+            <GameCard
+              key={game.id}
+              title={game.name}
+              backgroundImage={game.background_image}
+              released={game.released}
+              rating={game.rating}
+              ratings={game.ratings}
+              platforms={game.platforms}
+            />
           ))}
-        </Wrap>
+        </SimpleGrid>
       )}
     </>
   );

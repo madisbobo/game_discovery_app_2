@@ -15,32 +15,42 @@ import {
   Icon,
   CardHeader,
 } from "@chakra-ui/react";
+import { Platform, Rating } from "../hooks/useGames";
 
 interface Props {
   title: string;
+  backgroundImage: string;
+  released: string;
   rating: number;
+  ratings: Rating[];
+  platforms: Platform[];
 }
 
-const GameCard = ({ title, rating }: Props) => {
+const GameCard = ({
+  title,
+  backgroundImage: background_image,
+  released,
+  rating,
+  ratings,
+  platforms,
+}: Props) => {
   return (
     <>
       <Card maxW="sm" overflow="hidden">
-        <CardHeader p="0px">
-          <Image
-            objectFit="cover"
-            src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-            alt="Chakra UI"
-          />
-        </CardHeader>
+          <Image objectFit="cover" src={background_image} alt="Chakra UI" />
         <CardBody>
           <Stack spacing="3">
             <Flex>
-              <Text>Platform icons</Text>
+              {platforms.map((p) => (
+                <Text key={p.platform.id}>{p.platform.name}</Text>
+              ))}
               <Spacer />
               <Text>{rating}</Text>
             </Flex>
-            <Heading size="md">{title} 👍</Heading>
-            <Text>Release date</Text>
+            <Heading size="md">
+              {title} {ratings[0].title}
+            </Heading>
+            <Text>{released}</Text>
           </Stack>
         </CardBody>
       </Card>
