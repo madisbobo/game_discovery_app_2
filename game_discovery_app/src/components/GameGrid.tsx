@@ -30,15 +30,7 @@ const GameGrid = () => {
           p="15px"
         >
           {games.map((game) => (
-            <GameCard
-              key={game.id}
-              title={game.name}
-              backgroundImage={game.background_image}
-              released={game.released}
-              rating={game.rating}
-              ratings={game.ratings}
-              platforms={game.platforms}
-            />
+            <GameCard game={game} key={game.id} />
           ))}
         </SimpleGrid>
       )}

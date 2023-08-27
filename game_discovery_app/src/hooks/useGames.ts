@@ -14,14 +14,13 @@ export interface Game {
   released: string;
   rating: number;
   ratings: Rating[];
-  platforms: Platform[];
+  parent_platforms: { platform: Platform }[];
 }
 
 export interface Platform {
-  platform: {
-    id: number;
-    name: string;
-  }
+  id: number;
+  name: string;
+  slug: string;
 }
 
 export interface Rating {
