@@ -14,9 +14,12 @@ import {
   Spacer,
   Icon,
   CardHeader,
+  Badge,
 } from "@chakra-ui/react";
 import { Game } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
+import { Md10K } from "react-icons/md";
+import CriticScore from "./CriticScore";
 
 interface Props {
   game: Game;
@@ -29,13 +32,12 @@ const GameCard = ({ game }: Props) => {
         <Image objectFit="cover" src={game.background_image} alt="Chakra UI" />
         <CardBody>
           <Stack spacing="3">
-            <Flex>
+            <HStack justifyContent="space-between">
               <PlatformIconList
                 platforms={game.parent_platforms.map((p) => p.platform)}
               />
-              <Spacer />
-              <Text>{game.rating}</Text>
-            </Flex>
+              <CriticScore criticScore={game.metacritic} />
+            </HStack>
             <Heading size="md">
               {game.name} {game.ratings[0].title}
             </Heading>
