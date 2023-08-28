@@ -39,7 +39,7 @@ const GameCard = ({ game }: Props) => {
             <Heading size="md">
               {game.name} {game.ratings[0].title}
             </Heading>
-            <Text>{game.released}</Text>
+            <Text color="gray.500">{game.released}</Text>
           </Stack>
         </CardBody>
       </Card>
