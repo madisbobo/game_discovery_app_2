@@ -1,10 +1,7 @@
 import {
-  HStack,
   SimpleGrid,
   Spinner,
-  Text,
-  Wrap,
-  WrapItem,
+  Text
 } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";

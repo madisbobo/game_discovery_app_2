@@ -1,25 +1,16 @@
 import {
   Card,
   CardBody,
+  HStack,
+  Heading,
   Image,
   Stack,
-  Heading,
   Text,
-  Divider,
-  CardFooter,
-  Button,
-  ButtonGroup,
-  HStack,
-  Flex,
-  Spacer,
-  Icon,
-  CardHeader,
-  Badge,
 } from "@chakra-ui/react";
 import { Game } from "../hooks/useGames";
-import PlatformIconList from "./PlatformIconList";
-import { Md10K } from "react-icons/md";
 import CriticScore from "./CriticScore";
+import PlatformIconList from "./PlatformIconList";
+import imgCropper from "../services/image-url";
 
 interface Props {
   game: Game;
@@ -29,7 +20,11 @@ const GameCard = ({ game }: Props) => {
   return (
     <>
       <Card maxW="sm" overflow="hidden">
-        <Image objectFit="cover" src={game.background_image} alt="Chakra UI" />
+        <Image
+          objectFit="cover"
+          src={imgCropper(game.background_image)}
+          alt="Chakra UI"
+        />
         <CardBody>
           <Stack spacing="3">
             <HStack justifyContent="space-between">
