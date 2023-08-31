@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import gameService, { CanceledError } from '../services/game-service';
-
+import { useEffect, useState } from "react";
+import gameService, { CanceledError } from "../services/game-service";
+import useData from "./useData";
 
 export interface FetchGamesResponse {
   count: number;
@@ -29,29 +29,8 @@ export interface Rating {
 }
 
 const useGames = () => {
-    const [games, setGames] = useState<Game[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState("");
-  
-    useEffect(() => {
-      setIsLoading(true);
-      const { request, cancel } = gameService.getAllGames();
-      request
-        .then((res) => {
-          setGames(res.data.results);
-          setIsLoading(false);
-          console.log(res.data.results);
-        })
-        .catch((err) => {
-          setIsLoading(false);
-          if (err instanceof CanceledError) return;
-          setError(err.message);
-          console.log(err);
-        });
-      return () => cancel();
-    }, []);
+  const { data, isLoading, error } = useData<Game>("games");
+  return { games: data, isLoading, error };
+};
 
-    return {games, isLoading, error}
-}
-
-export default useGames
+export default useGames;
