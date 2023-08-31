@@ -43,9 +43,9 @@ const useGames = () => {
           console.log(res.data.results);
         })
         .catch((err) => {
+          setIsLoading(false);
           if (err instanceof CanceledError) return;
           setError(err.message);
-          setIsLoading(false);
           console.log(err);
         });
       return () => cancel();

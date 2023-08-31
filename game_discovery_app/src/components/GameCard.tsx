@@ -18,29 +18,27 @@ interface Props {
 
 const GameCard = ({ game }: Props) => {
   return (
-    <>
-      <Card height="357px" width="300px" borderRadius={10} overflow="hidden">
-        <Image
-          objectFit="cover"
-          src={imgCropper(game.background_image)}
-          alt="Chakra UI"
-        />
-        <CardBody>
-          <Stack spacing="3">
-            <HStack justifyContent="space-between">
-              <PlatformIconList
-                platforms={game.parent_platforms.map((p) => p.platform)}
-              />
-              <CriticScore criticScore={game.metacritic} />
-            </HStack>
-            <Heading size="md">
-              {game.name} {game.ratings[0].title}
-            </Heading>
-            <Text color="gray.500">{game.released}</Text>
-          </Stack>
-        </CardBody>
-      </Card>
-    </>
+    <Card height="357px" width="300px" borderRadius={10} overflow="hidden">
+      <Image
+        objectFit="cover"
+        src={imgCropper(game.background_image)}
+        alt="Chakra UI"
+      />
+      <CardBody>
+        <Stack spacing="3">
+          <HStack justifyContent="space-between">
+            <PlatformIconList
+              platforms={game.parent_platforms.map((p) => p.platform)}
+            />
+            <CriticScore criticScore={game.metacritic} />
+          </HStack>
+          <Heading size="md">
+            {game.name} {game.ratings[0].title}
+          </Heading>
+          <Text color="gray.500">{game.released}</Text>
+        </Stack>
+      </CardBody>
+    </Card>
   );
 };
 
