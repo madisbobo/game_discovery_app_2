@@ -1,16 +1,11 @@
-import { useState } from "react";
 import {
-  Heading,
-  Text,
-  SimpleGrid,
-  Box,
   Grid,
   GridItem,
-  Show,
+  Show
 } from "@chakra-ui/react";
-import Navbar from "./components/Navbar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
