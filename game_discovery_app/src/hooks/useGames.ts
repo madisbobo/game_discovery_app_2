@@ -26,8 +26,8 @@ export interface Rating {
   title: string;
 }
 
-const useGames = () => {
-  const { data, isLoading, error } = useData<Game>("games");
+const useGames = (genre?: string) => {
+  const { data, isLoading, error } = useData<Game>("games", genre);
   return { games: data, isLoading, error };
 };
 

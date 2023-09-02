@@ -2,8 +2,19 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import Navbar from "./components/Navbar";
+import { useState } from "react";
 
 function App() {
+  const [genre, setGenre] = useState("");
+
+  const filterByGenre = (event) => {
+    console.log("hey");
+
+    setGenre("family");
+    console.log(genre);
+    console.log(event);
+  };
+
   return (
     <>
       <Grid
@@ -21,11 +32,11 @@ function App() {
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" p="15px">
-            <GenreList />
+            <GenreList handleClick={filterByGenre} />
           </GridItem>
         </Show>
         <GridItem area="main" p="15px">
-          <GameGrid />
+          <GameGrid key={genre} genre={genre} />
         </GridItem>
       </Grid>
     </>
