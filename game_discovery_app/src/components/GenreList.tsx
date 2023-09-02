@@ -7,19 +7,18 @@ const GenreList = () => {
 
   return (
     <>
-      <List p="15px">
+      <List>
         <ListItem>{error && <p>{error}</p>}</ListItem>
         <ListItem>{isLoading && <p>Loading...</p>}</ListItem>
         {genres.map((genre) => (
-          <ListItem key={genre.id} mb={3}>
+          <ListItem key={genre.id} paddingY="5px">
             <HStack spacing={3}>
               <Image
                 src={imgCropper(genre.image_background)}
-                height="30px"
-                width="30px"
-                borderRadius="4px"
+                boxSize="32px"
+                borderRadius="8px"
               />
-              <Text>{genre.name}</Text>
+              <Text fontSize="lg">{genre.name}</Text>
             </HStack>
           </ListItem>
         ))}

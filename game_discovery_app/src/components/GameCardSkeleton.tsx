@@ -8,7 +8,7 @@ import {
 
 const LoadingGrid = () => {
   return (
-    <Card height="357px" width="300px" borderRadius={10} overflow="hidden">
+    <Card height="340px" borderRadius={10} overflow="hidden">
       <Skeleton height="200px" justifyContent="center" />
       <CardBody>
         <SkeletonText />
