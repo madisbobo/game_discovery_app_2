@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import gameService, { CanceledError } from "../services/game-service";
 import useData from "./useData";
 
 export interface FetchGamesResponse {

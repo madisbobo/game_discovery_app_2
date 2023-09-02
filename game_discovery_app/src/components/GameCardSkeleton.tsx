@@ -2,8 +2,7 @@ import {
   Card,
   CardBody,
   Skeleton,
-  SkeletonText,
-  Spinner,
+  SkeletonText
 } from "@chakra-ui/react";
 
 const LoadingGrid = () => {

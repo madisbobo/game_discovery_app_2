@@ -8,8 +8,8 @@ function App() {
     <>
       <Grid
         templateAreas={{
-          base: `"nav" "main" "footer"`,
-          lg: `"nav nav" "aside main" "footer footer"`,
+          base: `"nav" "main"`,
+          lg: `"nav nav" "aside main"`,
         }}
         templateColumns={{
           base: "1fr",
@@ -27,7 +27,6 @@ function App() {
         <GridItem area="main" p="15px">
           <GameGrid />
         </GridItem>
-        <GridItem area="footer">footer</GridItem>
       </Grid>
     </>
   );
