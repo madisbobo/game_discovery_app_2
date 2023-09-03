@@ -1,4 +1,5 @@
 import useData from "./useData";
+import { Genre } from "./useGenres";
 
 export interface FetchGamesResponse {
   count: number;
@@ -26,8 +27,8 @@ export interface Rating {
   title: string;
 }
 
-const useGames = (genre?: string) => {
-  const { data, isLoading, error } = useData<Game>("games", genre);
+const useGames = (selectedGenre: Genre | null) => {
+  const { data, isLoading, error } = useData<Game>("games", {params: {genres: selectedGenre?.id}}, [selectedGenre?.id]);
   return { games: data, isLoading, error };
 };
 

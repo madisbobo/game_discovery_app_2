@@ -3,17 +3,10 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import Navbar from "./components/Navbar";
 import { useState } from "react";
+import { Genre } from "./hooks/useGenres";
 
 function App() {
-  const [genre, setGenre] = useState("");
-
-  const filterByGenre = (event) => {
-    console.log("hey");
-
-    setGenre("family");
-    console.log(genre);
-    console.log(event);
-  };
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
   return (
     <>
@@ -32,11 +25,11 @@ function App() {
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" p="15px">
-            <GenreList handleClick={filterByGenre} />
+            <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
           </GridItem>
         </Show>
         <GridItem area="main" p="15px">
-          <GameGrid key={genre} genre={genre} />
+          <GameGrid selectedGenre={selectedGenre} />
         </GridItem>
       </Grid>
     </>
