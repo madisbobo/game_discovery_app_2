@@ -15,7 +15,7 @@ interface Props {
   selectedPlatform: Platform | null;
 }
 
-const PlatformSelected = ({ selectedPlatform, onSelectPlatform }: Props) => {
+const PlatformSelector = ({ selectedPlatform, onSelectPlatform }: Props) => {
   const { platforms, error } = usePlatforms();
 
   if (error) return null;
@@ -41,4 +41,4 @@ const PlatformSelected = ({ selectedPlatform, onSelectPlatform }: Props) => {
   );
 };
 
-export default PlatformSelected;
+export default PlatformSelector;
