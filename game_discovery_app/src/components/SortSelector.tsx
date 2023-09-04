@@ -8,25 +8,41 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 
-const SortSelector = () => {
-  const ordering = [
-    "Name",
-    "Released",
-    "Added",
-    "Created, updated",
-    "Rating",
-    "Metacritic",
+interface Props {
+  onSelectSortOrder: (sortOrder: Ordering) => void;
+  selectedSortOrder: Ordering | null;
+}
+
+export interface Ordering {
+  value: string;
+  label: string;
+}
+
+const SortSelector = ({ onSelectSortOrder, selectedSortOrder }: Props) => {
+  const sortOrders = [
+    { value: " ", label: "Relevance" },
+    { value: "-added", label: "Date Added" },
+    { value: "name", label: "Name" },
+    { value: "-released", label: "Release Date" },
+    { value: "-metacritic", label: "Popularity" },
+    { value: "-rating", label: "Average Rating" },
   ];
 
   return (
     <Box>
       <Menu>
         <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-          Order By:
+          Order By: {selectedSortOrder?.label || "Relevance"}
         </MenuButton>
         <MenuList>
-          {ordering.map((by) => (
-            <MenuItem key={by}>{by}</MenuItem>
+          {sortOrders.map((order) => (
+            <MenuItem
+              key={order.value}
+              value={order.value}
+              onClick={() => onSelectSortOrder(order)}
+            >
+              {order.label}
+            </MenuItem>
           ))}
         </MenuList>
       </Menu>

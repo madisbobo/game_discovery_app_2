@@ -27,11 +27,16 @@ export interface Rating {
   title: string;
 }
 
-
 const useGames = (gameQuery: GameQuery) => {
   const { data, isLoading, error } = useData<Game>(
     "games",
-    { params: {genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id} },
+    {
+      params: {
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder?.value,
+      },
+    },
     [gameQuery]
   );
   return { games: data, isLoading, error };
