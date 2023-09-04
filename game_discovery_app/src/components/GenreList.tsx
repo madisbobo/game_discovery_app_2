@@ -1,13 +1,14 @@
-import { Button, HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
+import { Button, HStack, Image, List, ListItem } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import imgCropper from "../services/image-url";
 import GenreSkeleton from "./GenreSkeleton";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { genres, isLoading, error } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
@@ -33,6 +34,7 @@ const GenreList = ({ onSelectGenre }: Props) => {
                 fontSize="lg"
                 variant="link"
                 onClick={() => onSelectGenre(genre)}
+                fontWeight={selectedGenre?.id === genre.id ? "bold" : "normal"}
               >
                 {genre.name}
               </Button>
