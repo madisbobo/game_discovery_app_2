@@ -33,7 +33,7 @@ const GameCard = ({ game }: Props) => {
             <CriticScore criticScore={game.metacritic} />
           </HStack>
           <Heading size="md">
-            {game.name} {game.ratings[0].title}
+            {game.name} {game.ratings[0]?.title}
           </Heading>
           <Text color="gray.500">{game.released}</Text>
         </Stack>
