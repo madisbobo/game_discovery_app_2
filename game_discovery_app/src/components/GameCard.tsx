@@ -8,9 +8,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Game } from "../hooks/useGames";
+import imgCropper from "../services/image-url";
 import CriticScore from "./CriticScore";
 import PlatformIconList from "./PlatformIconList";
-import imgCropper from "../services/image-url";
 
 interface Props {
   game: Game;
@@ -24,15 +24,19 @@ const GameCard = ({ game }: Props) => {
         src={imgCropper(game.background_image)}
         alt="Chakra UI"
       />
-      <CardBody>
+      <CardBody
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+      >
         <Stack spacing="3">
-          <HStack justifyContent="space-between">
+          <HStack justifyContent="space-between" mb={1}>
             <PlatformIconList
               platforms={game.parent_platforms.map((p) => p.platform)}
             />
             <CriticScore criticScore={game.metacritic} />
           </HStack>
-          <Heading size="md">
+          <Heading size="md" mb={1}>
             {game.name} {game.ratings[0]?.title}
           </Heading>
           <Text color="gray.500">{game.released}</Text>
