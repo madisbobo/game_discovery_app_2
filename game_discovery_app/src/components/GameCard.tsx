@@ -5,18 +5,23 @@ import {
   Heading,
   Image,
   Stack,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import { Game } from "../hooks/useGames";
 import imgCropper from "../services/image-url";
 import CriticScore from "./CriticScore";
 import PlatformIconList from "./PlatformIconList";
 
+import Emoji from "./Emoji";
+
 interface Props {
   game: Game;
 }
 
 const GameCard = ({ game }: Props) => {
+  console.log(game.rating_top);
+
+  
   return (
     <Card borderRadius={10} overflow="hidden">
       <Image
@@ -37,7 +42,7 @@ const GameCard = ({ game }: Props) => {
             <CriticScore criticScore={game.metacritic} />
           </HStack>
           <Heading size="md" mb={1}>
-            {game.name} {game.ratings[0]?.title}
+            {game.name} <Emoji rating={game.rating_top}/>
           </Heading>
           <Text color="gray.500">{game.released}</Text>
         </Stack>
