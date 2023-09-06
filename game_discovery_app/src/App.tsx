@@ -47,7 +47,7 @@ function App() {
           </GridItem>
         </Show>
 
-        <GridItem area="main" p="15px">
+        <GridItem area="main" p="15px" mb="20px">
           <GameHeading
             platform={gameQuery.platform?.name}
             genre={gameQuery.genre?.name}
