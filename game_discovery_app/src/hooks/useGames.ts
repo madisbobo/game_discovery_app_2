@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { GameQuery } from "../App";
-import APIClient from "../services/api-client";
+import APIClient, { FetchResponse } from "../services/api-client";
 import { Platform } from "./usePlatforms";
 
 export interface FetchGamesResponse {
@@ -26,7 +26,7 @@ export interface Rating {
 const apiClient = new APIClient<Game>("/games");
 
 const useGames = (gameQuery: GameQuery) => {
-  return useQuery({
+  return useQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: () =>
       apiClient
