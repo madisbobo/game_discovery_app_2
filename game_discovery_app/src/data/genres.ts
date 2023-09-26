@@ -1,5 +1,6 @@
 export const initialGenres =  {
     "count": 19,
+    "next": null,
     "results": [
         {
             "id": 4,
